@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fun Facts - Teacher Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .fact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            line-height: 1.6;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .fact-box:hover {
+            transform: scale(1.02);
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .fact-count {
+            color: #999;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Fun Facts for Teachers</h1>
+        <p class="subtitle">Click the button to discover interesting facts!</p>
+        
+        <div class="fact-box" id="factDisplay">
+            Click the button below to get started!
+        </div>
+        
+        <button onclick="displayRandomFact()">Get New Fact</button>
+        
+        <div class="fact-count">
+            <span id="factNumber">0</span> / <span id="totalFacts">0</span> facts explored
+        </div>
+    </div>
+
+    <script>
+        const funFacts = [
+            "The human brain can store approximately 2.5 petabytes of information - equivalent to about 3 million hours of TV!",
+            "Students retain 10% of what they read, 20% of what they hear, but 90% of what they do and say.",
+            "The average person uses only 10% of their brain. FALSE! We actually use virtually all parts of our brain.",
+            "Learning a new skill rewires your brain by creating new neural pathways.",
+            "The smell of lavender can improve focus and reduce anxiety in students.",
+            "Taking notes by hand is more effective for learning than typing on a computer.",
+            "Short breaks improve focus and productivity - the Pomodoro Technique suggests 25-minute work intervals.",
+            "Music can enhance learning and memory retention across all age groups.",
+            "Drinking water improves cognitive function and concentration by up to 30%.",
+            "The brain burns more calories when learning new information than when watching TV.",
+            "Students learn better with varied teaching methods rather than a single approach.",
+            "Physical exercise increases blood flow to the brain and improves cognitive function.",
+            "A good night's sleep is essential for memory consolidation and learning.",
+            "Spaced repetition is more effective for long-term retention than cramming.",
+            "Positive reinforcement is more effective than punishment for learning.",
+            "Diversity in the classroom enhances critical thinking and problem-solving skills.",
+            "The average attention span is 8-12 minutes before needing a mental break.",
+            "Storytelling activates more parts of the brain than just listening to facts.",
+            "Humor in teaching can increase engagement and improve information retention.",
+            "Outdoor learning environments can improve focus and creativity in students.",
+            "Multitasking reduces productivity by up to 40% compared to focused work.",
+            "Gratitude practices in class improve student well-being and academic performance.",
+            "Social interaction enhances learning and information processing.",
+            "Teaching others is one of the best ways to master a subject yourself.",
+            "Curiosity-driven learning leads to better long-term retention and understanding."
+        ];
+
+        let factsViewed = 0;
+
+        function displayRandomFact() {
+            const randomIndex = Math.floor(Math.random() * funFacts.length);
+            const randomFact = funFacts[randomIndex];
+            
+            document.getElementById('factDisplay').textContent = randomFact;
+            factsViewed++;
+            document.getElementById('factNumber').textContent = factsViewed;
+            document.getElementById('totalFacts').textContent = funFacts.length;
+        }
+
+        // Initialize fact count on page load
+        window.onload = function() {
+            document.getElementById('totalFacts').textContent = funFacts.length;
+        };
+    </script>
+</body>
+</html>
